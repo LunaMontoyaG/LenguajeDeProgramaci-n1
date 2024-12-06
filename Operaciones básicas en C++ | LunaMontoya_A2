@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float Num1, Num2;
+    cout <<"Escribe el primer número: ";
+    cin >> Num1;
+    
+    cout <<"Escribe el segundo número: ";
+    cin >> Num2;
+    
+    float Suma = Num1 + Num2;
+    float Resta = Num1 - Num2;
+    float Multi = Num1 * Num2;
+    float Divi = Num1 / Num2;
+    
+    cout << "La suma es: " << Suma << endl;
+    cout << "La resta es: " << Resta << endl;
+    cout << "La multiplicación es: " << Multi << endl;
+    cout << "La división es: " << Divi << endl;
+
+    return 0;
+}
