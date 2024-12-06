@@ -1,0 +1,17 @@
+#include <iostream>
+
+int main()
+{
+    int Edad;
+    std::cout<<"Ingrese su edad: ";
+    std::cin>> Edad;
+    
+    if (Edad >= 18) {
+        std::cout<<"¡Usted es mayor de edad!" << std::endl;
+    }
+    else {
+        std::cout<<"¡Usted es menor de edad!" << std::endl;
+    }
+
+    return 0;
+}
