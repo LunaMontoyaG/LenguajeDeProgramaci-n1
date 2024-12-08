@@ -1,0 +1,73 @@
+/* LunaMontoya_A3 | Cálculo de RFC */
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Buscar 1er vocal de ApellidoPat
+char PrimerVocal(const string& str) {
+    for (size_t i = 1; i < str.length(); ++i) {
+        char c = (str[i]); // Convertir a mayúscula para comparar consistentemente
+        if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+            return c;
+        }
+    }
+    return 'X'; // No vocal = "X"
+}
+
+// Variables | Función calcular RFC
+string calcularRFC(const string& Nombre, const string& ApellidoPat, const string& ApellidoMat, const string& DiaNac, const string& MesNac, const string& AnnoNac) {
+    string RFC;
+
+    // Primer letra y vocal de ApellidoPat
+    char LetraApellidoPat = (ApellidoPat[0]);
+    char VocalApellidoPat = PrimerVocal(ApellidoPat);
+
+    // Primer Letra ApellidoMat | Si no hay, usar "X"
+    char LetraApellidoMat = (!ApellidoMat.empty()) ? (ApellidoMat[0]) : 'X';
+
+    // Primer Letra Nombre
+    char LetraNombre = (Nombre[0]);
+
+    // Obtener últimos dos dígitos del Año
+    string Anno = AnnoNac.substr(2, 2);
+
+    // Generación del RFC
+    RFC += LetraApellidoPat;
+    RFC += VocalApellidoPat;
+    RFC += LetraApellidoMat;
+    RFC += LetraNombre;
+    RFC += Anno;
+    RFC += MesNac;
+    RFC += DiaNac;
+
+    return RFC;
+}
+
+int main() {
+    string Nombre, ApellidoPat, ApellidoMat, AnnoNac, MesNac, DiaNac;
+
+    cout << "Introduce tu nombre: ";
+    getline(cin, Nombre);
+
+    cout << "Introduce tu apellido paterno: ";
+    getline(cin, ApellidoPat);
+
+    cout << "Introduce tu apellido materno (si no tienes, deja vacío): ";
+    getline(cin, ApellidoMat);
+    
+    cout << "\nFecha de nacimiento (solo numeros)\n";
+    
+    cout << "Día: ";
+    getline(cin, DiaNac);
+
+    cout << "Mes: ";
+    getline(cin, MesNac);
+    
+    cout << "Año: ";
+    getline(cin, AnnoNac);
+
+    string RFC = calcularRFC(Nombre, ApellidoPat, ApellidoMat, DiaNac, MesNac, AnnoNac);
+    cout << "Tu RFC sin homoclave es: " << RFC << endl;
+
+    return 0;
+}
